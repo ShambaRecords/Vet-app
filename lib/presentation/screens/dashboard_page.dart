@@ -6,8 +6,11 @@ class DashboardPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      body: Center(
-        child: Text("Welcome to the dashboard"),
+      appBar: PlatformAppBar(
+        title: const Text("Dashboard"),
+      ),
+      body: const Center(
+        child: const Text("Welcome to the dashboard"),
       ),
     );
   }
