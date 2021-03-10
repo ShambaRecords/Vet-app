@@ -6,7 +6,10 @@ class SuccessPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      body: Center(child: Text("Congratulations! You have successfully made an appointment with Dr. Flutter"),),
+      body: Center(child: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Text("Congratulations! You have successfully made an appointment with Dr. Flutter"),
+      ),),
     );
   }
 }

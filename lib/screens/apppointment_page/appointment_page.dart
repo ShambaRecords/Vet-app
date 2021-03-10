@@ -69,8 +69,8 @@ class AppointmentPage extends HookWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () =>
-                  getIt<NavigationService>().navigateTo(SUCCESS_PAGE_ROUTE),
+              onPressed: () => getIt<NavigationService>()
+                  .navigateToAndPopBackStack(SUCCESS_PAGE_ROUTE),
               child: Text("Make Appointment"),
             )
           ],
