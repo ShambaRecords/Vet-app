@@ -4,19 +4,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:vet_app/presentation/screens/dashboard_page.dart';
 import 'package:vet_app/res/strings.dart';
+import 'package:vet_app/screens/apppointment_page/appointment_page.dart';
+import 'package:vet_app/screens/home_page/home_page.dart';
+import 'package:vet_app/screens/settings_page/settings_page.dart';
+import 'package:vet_app/screens/success_page/success_page.dart';
+import 'package:vet_app/screens/user_home_page/user_home_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case DASHBOARD_ROUTE:
-        return _returnPage(DashboardPage());
+      case HOME_ROUTE:
+        return _returnPage(HomePage());
+      case SETTINGS_PAGE_ROUTE:
+        return _returnPage(SettingsPage());
+      case USER_HOME_PAGE_ROUTE:
+        return _returnPage(UserHomePage());
+      case APPOINTMENT_PAGE_ROUTE:
+        return _returnPage(AppointmentPage());
+      case SUCCESS_PAGE_ROUTE:
+        return _returnPage(SuccessPage());
 
       default:
-        return _errorRoute();
+        return _errorRoute(settings.name);
     }
   }
 
@@ -25,7 +37,7 @@ class RouteGenerator {
     return MaterialPageRoute(builder: (_) => page);
   }
 
-  static Route<dynamic> _errorRoute() {
+  static Route<dynamic> _errorRoute(String? routeName) {
     return MaterialPageRoute(
       builder: (_) {
         return PlatformScaffold(
@@ -35,7 +47,7 @@ class RouteGenerator {
             ),
           ),
           body: Center(
-            child: Text('AN ERROR OCCURRED'),
+            child: Text('AN ERROR OCCURRED. Provided route was $routeName'),
           ),
         );
       },

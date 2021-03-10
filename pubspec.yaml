@@ -21,6 +21,10 @@ dependencies:
   dio: ^4.0.0-beta6
   pinput: ^1.1.0
   flutter_platform_widgets: ^1.0.1-nullsafety.0
+  pie_chart: ^5.0.0
+  table_calendar: ^3.0.0-nullsafety.1
+  intl: ^0.17.0
+  fluttertoast: ^8.0.1-nullsafety.0
 
   #Firebase
   firebase_core: ^1.0.0

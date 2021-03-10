@@ -10,7 +10,16 @@ const Color primaryContrastingColor = Color.fromARGB(255, 201, 242, 153);
 
 const Color paletteRed = Color.fromARGB(255, 239, 100, 97);
 const Color palettePurple = Color.fromARGB(255, 125, 56, 125);
-const Color raisinBlack = Color.fromARGB(255, 36,35,37);
+const Color raisinBlack = Color.fromARGB(255, 36, 35, 37);
+
+List<Color> colorList = [
+  primaryColor,
+  primaryColorDarkShade,
+  primaryColorAccent,
+  primaryContrastingColor,
+  paletteRed,
+  palettePurple,
+];
 
 /// ######### Android #############
 ///
@@ -34,10 +43,40 @@ TextTheme lightTextThemeAndroid = GoogleFonts.ibmPlexSansTextTheme(TextTheme(
 ));
 
 /// Colors theme for material defaults of dark theme
-dynamic lightAppThemeAndroid = ThemeData(
+ThemeData lightAppThemeAndroid = ThemeData(
   primaryColor: primaryColor,
+  accentColor: primaryColorAccent,
+  scaffoldBackgroundColor: Colors.white,
+  accentIconTheme: IconThemeData(
+    color: primaryColorAccent,
+  ),
+  buttonTheme: ButtonThemeData(
+      buttonColor: primaryColorAccent,
+      textTheme: ButtonTextTheme.normal,
+      splashColor: Colors.white),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(primaryColorAccent),
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(style: ButtonStyle(
+    backgroundColor: MaterialStateProperty.all<Color>(primaryColorAccent),
+  )),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: primaryColorAccent,
+    splashColor: Colors.white,
+    elevation: 5,
+    foregroundColor: Colors.white,
+  ),
   visualDensity: VisualDensity.adaptivePlatformDensity,
   textTheme: lightTextThemeAndroid,
+  iconTheme: IconThemeData(
+    color: primaryColor,
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: Colors.white,
+    elevation: 2.0,
+  ),
 );
 
 /// ######### IOS #############
@@ -45,7 +84,7 @@ dynamic lightAppThemeAndroid = ThemeData(
 ///
 ///
 /// Colors theme for material defaults of dark theme
-dynamic lightAppThemeIos = CupertinoThemeData(
+CupertinoThemeData lightAppThemeIos = CupertinoThemeData(
   primaryColor: primaryColor,
   scaffoldBackgroundColor: Colors.white,
   primaryContrastingColor: primaryContrastingColor,
@@ -69,22 +108,17 @@ var homeLightColors = GlobalAppColors(
 
 /// Container for all things color in vet_app
 class GlobalAppColors {
-  @required
   String? name;
-  @required
-  TextTheme? textThemeAndroid;
-  @required
-  CupertinoTextThemeData? textThemeIos;
-  @required
-  dynamic appThemeAndroid;
-  @required
-  dynamic appThemeIos;
+  TextTheme textThemeAndroid;
+  CupertinoTextThemeData textThemeIos;
+  ThemeData appThemeAndroid;
+  CupertinoThemeData appThemeIos;
 
   GlobalAppColors({
-    this.name,
-    this.textThemeAndroid,
-    this.textThemeIos,
-    this.appThemeAndroid,
-    this.appThemeIos,
+    required this.name,
+    required this.textThemeAndroid,
+    required this.textThemeIos,
+    required this.appThemeAndroid,
+    required this.appThemeIos,
   });
 }

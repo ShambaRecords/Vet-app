@@ -36,7 +36,7 @@ class Root extends HookWidget {
           theme: _colors.appThemeIos,
         ),
         onGenerateRoute: RouteGenerator.generateRoute,
-        initialRoute: DASHBOARD_ROUTE,
+        initialRoute: HOME_ROUTE,
         navigatorKey: getIt<NavigationService>().navigatorKey,
       ),
     );

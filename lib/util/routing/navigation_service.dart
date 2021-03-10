@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:injectable/injectable.dart';
 
 class NavigationService {
   final GlobalKey<NavigatorState>? navigatorKey;
@@ -8,6 +7,10 @@ class NavigationService {
 
   Future<dynamic> navigateTo(String routeName) {
     return navigatorKey!.currentState!.pushNamed(routeName);
+  }
+
+  Future<dynamic> navigateToAndPopBackStack(String routeName) {
+    return navigatorKey!.currentState!.pushNamedAndRemoveUntil(routeName, (route) => route.isFirst);
   }
 
   void popPage() {
