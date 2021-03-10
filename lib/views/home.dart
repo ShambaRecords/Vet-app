@@ -2,6 +2,8 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:vet_app/data/data_source.dart';
+import 'package:vet_app/model/appointment_model.dart';
 import 'package:vet_app/res/colors/colors.dart';
 import 'package:vet_app/views/appointments.dart';
 import 'package:vet_app/views/dashboard.dart';
@@ -88,6 +90,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
+          backgroundColor: colorSecondary,
+          elevation: 0,
           title: Text(
               _pageTitles.elementAt(_selectedIndex),
             style: TextStyle(
@@ -98,6 +102,7 @@ class _HomeState extends State<Home> {
       backgroundColor: colorMutedBg,
       body: WillPopScope(
         child: Container(
+          color: colorGrayLight,
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         onWillPop: onWillPop,
