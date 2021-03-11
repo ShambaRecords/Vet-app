@@ -28,16 +28,26 @@ class PaymentsPage extends HookWidget {
                     Payment newPayment = Payment.fromJson(document.data()!);
                     currentPayments.add(newPayment);
                   }
-                  return ListView(
+                  return Column(
                     children: [
-                      for (var payment in currentPayments) ...[
-                        ListTile(
-                          title:
-                              Text("${payment.type} Payment - ${payment.user}"),
-                          subtitle: Text("Ksh. ${payment.amount}"),
-                          leading: Icon(Icons.payment),
+                      Text("Payments Recieved"),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListView(
+                            children: [
+                              for (var payment in currentPayments) ...[
+                                ListTile(
+                                  title:
+                                      Text("${payment.type} Payment - ${payment.user}"),
+                                  subtitle: Text("Ksh. ${payment.amount}"),
+                                  leading: Icon(Icons.payment),
+                                ),
+                              ]
+                            ],
+                          ),
                         ),
-                      ]
+                      ),
                     ],
                   );
                 },

@@ -7,7 +7,9 @@ import 'package:vet_app/util/di/injection.dart';
 
 @injectable
 class BookingsRepository {
-  addBooking(body) async {}
+  Future addBooking(Booking data) async {
+    return await getIt<ApiBaseProvider>().post(BOOKINGS_URL, data, false);
+  }
 
   /// Return a stream of a list of bookings
   Stream<QuerySnapshot> getBookings() {

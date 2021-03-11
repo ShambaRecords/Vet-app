@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 
 class DateTimeUtils {
-
   /// MMM
   static String getMonth(DateTime dateTime) {
     var formatter = DateFormat('MMM');
@@ -33,12 +32,17 @@ class DateTimeUtils {
     return formatter.format(dateTime.toLocal());
   }
 
-    /// yyyy MM dd HH:mm:ss.SSS
+  /// yyyy-MM-dd HH:mm:ss.SSS
+  static String getTime(DateTime dateTime) {
+    var formatter = DateFormat('HH:mm a');
+    return formatter.format(dateTime.toLocal());
+  }
+
+  /// yyyy MM dd HH:mm:ss.SSS
   static String getFullDateTime2(DateTime dateTime) {
     var formatter = DateFormat('yyyy MM dd HH:mm:ss.SSS');
     return formatter.format(dateTime.toLocal());
   }
-
 
   /// dd MMM
   static String getDayMonth(DateTime dateTime) {
@@ -62,5 +66,11 @@ class DateTimeUtils {
   static String getDayWeek(DateTime dateTime) {
     var formatter = DateFormat('DD');
     return formatter.format(dateTime);
+  }
+
+  /// "hh:mma"
+  static String getHour(DateTime time) {
+    var formatter = DateFormat('hh:mma');
+    return formatter.format(time);
   }
 }

@@ -14,9 +14,9 @@ class ApiBaseProvider implements ApiBase {
   @override
   Future post(String url, final data, bool isDocument) async {
     if (isDocument) {
-      await FirebaseFirestore.instance.doc(url).set(data);
+      await FirebaseFirestore.instance.doc(url).set(data.toJson());
     } else {
-      await FirebaseFirestore.instance.collection(url).add(data);
+      await FirebaseFirestore.instance.collection(url).add(data.toJson());
     }
   }
 

@@ -50,18 +50,21 @@ ThemeData lightAppThemeAndroid = ThemeData(
   accentIconTheme: IconThemeData(
     color: primaryColorAccent,
   ),
-  buttonTheme: ButtonThemeData(
-      buttonColor: primaryColorAccent,
-      textTheme: ButtonTextTheme.normal,
-      splashColor: Colors.white),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(primaryColorAccent),
     ),
   ),
-  textButtonTheme: TextButtonThemeData(style: ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(primaryColorAccent),
-  )),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      // backgroundColor: MaterialStateProperty.all<Color>(primaryColorAccent),
+      backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+      textStyle: MaterialStateProperty.all<TextStyle>(
+        TextStyle(color: Colors.white),
+        
+      ),
+    ),
+  ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: primaryColorAccent,
     splashColor: Colors.white,

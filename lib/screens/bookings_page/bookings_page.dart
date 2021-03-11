@@ -31,37 +31,50 @@ class BookingsPage extends HookWidget {
                     currentBookings.add(newBooking);
                   }
 
-                  return ListView(
-                    children: [
-                      for (var booking in currentBookings) ...[
-                        ListTile(
-                          title: Text(
-                            DateTimeUtils.getdd_MM_yyyy(
-                              booking.datetime!,
-                            ),
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                DateTimeUtils.getdd_MM_yyyy(
-                                  booking.datetime!,
-                                ),
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView(
+                      children: [
+                        for (var booking in currentBookings) ...[
+                          ListTile(
+                            title: Text(
+                              DateTimeUtils.getDayOfWeek(
+                                booking.datetime!,
                               ),
-                              Text(booking.user!),
-                              Text("Animal: ${booking.animal}"),
-                              Text("Species: ${booking.species}"),
-                              Text(booking.visitReason!),
-                            ],
-                          ),
-                          leading: Icon(Icons.calendar_today_outlined),
-                        )
-                      ]
-                    ],
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  DateTimeUtils.getDayMonthYear(
+                                    booking.datetime!,
+                                  ),
+                                ),
+                                Text(
+                                  DateTimeUtils.getTime(
+                                    booking.datetime!,
+                                  ),
+                                ),
+                                Text(
+                                  booking.user!,
+                                  style: TextStyle(
+                                      color: Theme.of(context).primaryColor),
+                                ),
+                                Text("Animal: ${booking.animal}"),
+                                Text("Species: ${booking.species}"),
+                                Text(booking.visitReason!),
+                              ],
+                            ),
+                            leading: Icon(Icons.calendar_today_outlined),
+                            trailing: Icon(Icons.check_box),
+                          )
+                        ]
+                      ],
+                    ),
                   );
                 },
                 loading: () {
-                  return PlatformCircularProgressIndicator();
+                  return Center(child: PlatformCircularProgressIndicator());
                 },
                 error: (error, stack) {})),
       ),

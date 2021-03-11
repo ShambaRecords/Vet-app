@@ -9,13 +9,6 @@ import 'package:vet_app/domain/providers/home/payments_provider.dart';
 import 'package:vet_app/res/styles.dart';
 
 class ReportsPage extends HookWidget {
-  // final Map<String, double> dataMap = {
-  //   "Preventive medicine": 3000,
-  //   "Surgery": 50000,
-  //   "Euthanasia": 5000,
-  //   "Protocol Vaccinations": 30000,
-  // };
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -28,7 +21,6 @@ class ReportsPage extends HookWidget {
             width: size.width,
             child: payments.when(
                 data: (data) {
-                  print("data is $data");
                   if (data.docs.isEmpty) {
                     return Text("No data found for the current selection");
                   }
@@ -45,51 +37,90 @@ class ReportsPage extends HookWidget {
                     }
                   };
 
-                  return ListView(
+                  return Column(
                     children: [
-                      PieChart(
-                        dataMap: breakdown,
-                        animationDuration: Duration(milliseconds: 800),
-                        chartLegendSpacing: 32,
-                        chartRadius: MediaQuery.of(context).size.width * 0.80,
-                        colorList: colorList,
-                        initialAngleInDegree: 0,
-                        chartType: ChartType.ring,
-                        ringStrokeWidth: 3,
-                        centerText: "Services",
-                        legendOptions: LegendOptions(
-                          showLegendsInRow: true,
-                          legendPosition: LegendPosition.bottom,
-                          showLegends: true,
-                          legendShape: BoxShape.circle,
-                          legendTextStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
+                      Center(child: Text("Your Breakdown")),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            children: [
+                              DropdownButton<String>(
+                                items: [
+                                  DropdownMenuItem<String>(child: Text("Item"))
+                                ],
+                                hint: Text("Start Time"),
+                                onTap: () {},
+                              ),
+                            ],
                           ),
-                        ),
-                        chartValuesOptions: ChartValuesOptions(
-                          showChartValueBackground: true,
-                          showChartValues: true,
-                          showChartValuesInPercentage: false,
-                          showChartValuesOutside: true,
-                          decimalPlaces: 1,
+                          Row(
+                            children: [
+                              DropdownButton<String>(
+                                items: [
+                                  DropdownMenuItem<String>(child: Text("Item"))
+                                ],
+                                hint: Text("End Time"),
+                                onTap: () {},
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(26.0),
+                              child: PieChart(
+                                dataMap: breakdown,
+                                animationDuration: Duration(milliseconds: 800),
+                                chartLegendSpacing: 32,
+                                chartRadius:
+                                    MediaQuery.of(context).size.width * 0.80,
+                                colorList: colorList,
+                                initialAngleInDegree: 0,
+                                chartType: ChartType.ring,
+                                ringStrokeWidth: 3,
+                                centerText: "Services",
+                                legendOptions: LegendOptions(
+                                  showLegendsInRow: true,
+                                  legendPosition: LegendPosition.bottom,
+                                  showLegends: true,
+                                  legendShape: BoxShape.circle,
+                                  legendTextStyle: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                chartValuesOptions: ChartValuesOptions(
+                                  showChartValueBackground: true,
+                                  showChartValues: true,
+                                  showChartValuesInPercentage: false,
+                                  showChartValuesOutside: true,
+                                  decimalPlaces: 1,
+                                ),
+                              ),
+                            ),
+                            Padding(padding: const EdgeInsets.only(top: 20)),
+                            for (var key in breakdown.keys) ...[
+                              ExpansionTile(
+                                title: Text(key),
+                                children: [
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(18.0),
+                                      child: Text(
+                                        //TODO: Get all users who paid for the service and how much they paid. Filters.
+                                        breakdown[key].toString(),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
+                            ]
+                          ],
                         ),
                       ),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
-                      Text("some text"),
                     ],
                   );
                 },
