@@ -31,3 +31,18 @@ class Specialist with _$Specialist {
   factory Specialist.fromJson(Map<String, dynamic> json) =>
       _$SpecialistFromJson(json);
 }
+
+@freezed
+class Payment with _$Payment {
+  const factory Payment(
+    double? amount,
+    @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+        DateTime? datetime,
+    String? user,
+    String? type,
+    String? service,
+  ) = _Payment;
+
+  factory Payment.fromJson(Map<String, dynamic> json) =>
+      _$PaymentFromJson(json);
+}

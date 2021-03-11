@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:vet_app/data/model/freezed_classes.dart';
-import 'package:vet_app/domain/providers/bookings/bookings_provider.dart';
+import 'package:vet_app/domain/providers/home/bookings_provider.dart';
 import 'package:vet_app/util/ui/datetimeutil.dart';
 
 class BookingsPage extends HookWidget {

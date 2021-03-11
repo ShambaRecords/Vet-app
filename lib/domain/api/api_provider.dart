@@ -35,4 +35,14 @@ class ApiBaseProvider implements ApiBase {
     // TODO: implement delete
     throw UnimplementedError();
   }
+
+  @override
+  filterByDate(
+      String url, bool isDocument, Timestamp startTime, Timestamp endTime) {
+    return isDocument
+        ? FirebaseFirestore.instance.doc(url).snapshots()
+        : FirebaseFirestore.instance
+            .collection(url)
+            .where('datetime', isGreaterThan: startTime, isLessThan: endTime).snapshots();
+  }
 }

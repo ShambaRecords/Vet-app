@@ -8,3 +8,4 @@ const SUCCESS_PAGE_ROUTE = "/success";
 
 // Api Routes
 const BOOKINGS_URL = "/specialists/testspecialistid/bookings";
+const PAYMENTS_URL = "/specialists/testspecialistid/payments";

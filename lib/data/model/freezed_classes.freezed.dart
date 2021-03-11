@@ -441,3 +441,268 @@ abstract class _Specialist implements Specialist {
   _$SpecialistCopyWith<_Specialist> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+Payment _$PaymentFromJson(Map<String, dynamic> json) {
+  return _Payment.fromJson(json);
+}
+
+/// @nodoc
+class _$PaymentTearOff {
+  const _$PaymentTearOff();
+
+  _Payment call(
+      double? amount,
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+          DateTime? datetime,
+      String? user,
+      String? type,
+      String? service) {
+    return _Payment(
+      amount,
+      datetime,
+      user,
+      type,
+      service,
+    );
+  }
+
+  Payment fromJson(Map<String, Object> json) {
+    return Payment.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $Payment = _$PaymentTearOff();
+
+/// @nodoc
+mixin _$Payment {
+  double? get amount => throw _privateConstructorUsedError;
+  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  DateTime? get datetime => throw _privateConstructorUsedError;
+  String? get user => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
+  String? get service => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentCopyWith<Payment> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentCopyWith<$Res> {
+  factory $PaymentCopyWith(Payment value, $Res Function(Payment) then) =
+      _$PaymentCopyWithImpl<$Res>;
+  $Res call(
+      {double? amount,
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+          DateTime? datetime,
+      String? user,
+      String? type,
+      String? service});
+}
+
+/// @nodoc
+class _$PaymentCopyWithImpl<$Res> implements $PaymentCopyWith<$Res> {
+  _$PaymentCopyWithImpl(this._value, this._then);
+
+  final Payment _value;
+  // ignore: unused_field
+  final $Res Function(Payment) _then;
+
+  @override
+  $Res call({
+    Object? amount = freezed,
+    Object? datetime = freezed,
+    Object? user = freezed,
+    Object? type = freezed,
+    Object? service = freezed,
+  }) {
+    return _then(_value.copyWith(
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      datetime: datetime == freezed
+          ? _value.datetime
+          : datetime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      service: service == freezed
+          ? _value.service
+          : service // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$PaymentCopyWith<$Res> implements $PaymentCopyWith<$Res> {
+  factory _$PaymentCopyWith(_Payment value, $Res Function(_Payment) then) =
+      __$PaymentCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {double? amount,
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+          DateTime? datetime,
+      String? user,
+      String? type,
+      String? service});
+}
+
+/// @nodoc
+class __$PaymentCopyWithImpl<$Res> extends _$PaymentCopyWithImpl<$Res>
+    implements _$PaymentCopyWith<$Res> {
+  __$PaymentCopyWithImpl(_Payment _value, $Res Function(_Payment) _then)
+      : super(_value, (v) => _then(v as _Payment));
+
+  @override
+  _Payment get _value => super._value as _Payment;
+
+  @override
+  $Res call({
+    Object? amount = freezed,
+    Object? datetime = freezed,
+    Object? user = freezed,
+    Object? type = freezed,
+    Object? service = freezed,
+  }) {
+    return _then(_Payment(
+      amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      datetime == freezed
+          ? _value.datetime
+          : datetime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      service == freezed
+          ? _value.service
+          : service // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_Payment with DiagnosticableTreeMixin implements _Payment {
+  const _$_Payment(
+      this.amount,
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+          this.datetime,
+      this.user,
+      this.type,
+      this.service);
+
+  factory _$_Payment.fromJson(Map<String, dynamic> json) =>
+      _$_$_PaymentFromJson(json);
+
+  @override
+  final double? amount;
+  @override
+  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  final DateTime? datetime;
+  @override
+  final String? user;
+  @override
+  final String? type;
+  @override
+  final String? service;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Payment(amount: $amount, datetime: $datetime, user: $user, type: $type, service: $service)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Payment'))
+      ..add(DiagnosticsProperty('amount', amount))
+      ..add(DiagnosticsProperty('datetime', datetime))
+      ..add(DiagnosticsProperty('user', user))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('service', service));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Payment &&
+            (identical(other.amount, amount) ||
+                const DeepCollectionEquality().equals(other.amount, amount)) &&
+            (identical(other.datetime, datetime) ||
+                const DeepCollectionEquality()
+                    .equals(other.datetime, datetime)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.service, service) ||
+                const DeepCollectionEquality().equals(other.service, service)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(amount) ^
+      const DeepCollectionEquality().hash(datetime) ^
+      const DeepCollectionEquality().hash(user) ^
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(service);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentCopyWith<_Payment> get copyWith =>
+      __$PaymentCopyWithImpl<_Payment>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PaymentToJson(this);
+  }
+}
+
+abstract class _Payment implements Payment {
+  const factory _Payment(
+      double? amount,
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+          DateTime? datetime,
+      String? user,
+      String? type,
+      String? service) = _$_Payment;
+
+  factory _Payment.fromJson(Map<String, dynamic> json) = _$_Payment.fromJson;
+
+  @override
+  double? get amount => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  DateTime? get datetime => throw _privateConstructorUsedError;
+  @override
+  String? get user => throw _privateConstructorUsedError;
+  @override
+  String? get type => throw _privateConstructorUsedError;
+  @override
+  String? get service => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$PaymentCopyWith<_Payment> get copyWith =>
+      throw _privateConstructorUsedError;
+}
