@@ -22,7 +22,7 @@ class _$BookingTearOff {
 
   _Booking call(
       String? animal,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? species,
       String? user,
@@ -48,7 +48,10 @@ const $Booking = _$BookingTearOff();
 /// @nodoc
 mixin _$Booking {
   String? get animal => throw _privateConstructorUsedError;
-  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  @JsonKey(
+      name: "datetime",
+      fromJson: _dateTimeFromTimeStamp,
+      toJson: _timeStampToDateTime)
   DateTime? get datetime => throw _privateConstructorUsedError;
   String? get species => throw _privateConstructorUsedError;
   String? get user => throw _privateConstructorUsedError;
@@ -66,7 +69,7 @@ abstract class $BookingCopyWith<$Res> {
       _$BookingCopyWithImpl<$Res>;
   $Res call(
       {String? animal,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? species,
       String? user,
@@ -122,7 +125,7 @@ abstract class _$BookingCopyWith<$Res> implements $BookingCopyWith<$Res> {
   @override
   $Res call(
       {String? animal,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? species,
       String? user,
@@ -178,7 +181,7 @@ class __$BookingCopyWithImpl<$Res> extends _$BookingCopyWithImpl<$Res>
 class _$_Booking with DiagnosticableTreeMixin implements _Booking {
   const _$_Booking(
       this.animal,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           this.datetime,
       this.species,
       this.user,
@@ -191,7 +194,10 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
   @override
   final String? animal;
   @override
-  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  @JsonKey(
+      name: "datetime",
+      fromJson: _dateTimeFromTimeStamp,
+      toJson: _timeStampToDateTime)
   final DateTime? datetime;
   @override
   final String? species;
@@ -260,7 +266,7 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
 abstract class _Booking implements Booking {
   const factory _Booking(
       String? animal,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? species,
       String? user,
@@ -272,7 +278,10 @@ abstract class _Booking implements Booking {
   @override
   String? get animal => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  @JsonKey(
+      name: "datetime",
+      fromJson: _dateTimeFromTimeStamp,
+      toJson: _timeStampToDateTime)
   DateTime? get datetime => throw _privateConstructorUsedError;
   @override
   String? get species => throw _privateConstructorUsedError;
@@ -452,7 +461,7 @@ class _$PaymentTearOff {
 
   _Payment call(
       double? amount,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? user,
       String? type,
@@ -477,7 +486,10 @@ const $Payment = _$PaymentTearOff();
 /// @nodoc
 mixin _$Payment {
   double? get amount => throw _privateConstructorUsedError;
-  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  @JsonKey(
+      name: "datetime",
+      fromJson: _dateTimeFromTimeStamp,
+      toJson: _timeStampToDateTime)
   DateTime? get datetime => throw _privateConstructorUsedError;
   String? get user => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
@@ -494,7 +506,7 @@ abstract class $PaymentCopyWith<$Res> {
       _$PaymentCopyWithImpl<$Res>;
   $Res call(
       {double? amount,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? user,
       String? type,
@@ -549,7 +561,7 @@ abstract class _$PaymentCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   @override
   $Res call(
       {double? amount,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? user,
       String? type,
@@ -604,7 +616,7 @@ class __$PaymentCopyWithImpl<$Res> extends _$PaymentCopyWithImpl<$Res>
 class _$_Payment with DiagnosticableTreeMixin implements _Payment {
   const _$_Payment(
       this.amount,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           this.datetime,
       this.user,
       this.type,
@@ -616,7 +628,10 @@ class _$_Payment with DiagnosticableTreeMixin implements _Payment {
   @override
   final double? amount;
   @override
-  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  @JsonKey(
+      name: "datetime",
+      fromJson: _dateTimeFromTimeStamp,
+      toJson: _timeStampToDateTime)
   final DateTime? datetime;
   @override
   final String? user;
@@ -682,7 +697,7 @@ class _$_Payment with DiagnosticableTreeMixin implements _Payment {
 abstract class _Payment implements Payment {
   const factory _Payment(
       double? amount,
-      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+      @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? user,
       String? type,
@@ -693,7 +708,10 @@ abstract class _Payment implements Payment {
   @override
   double? get amount => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+  @JsonKey(
+      name: "datetime",
+      fromJson: _dateTimeFromTimeStamp,
+      toJson: _timeStampToDateTime)
   DateTime? get datetime => throw _privateConstructorUsedError;
   @override
   String? get user => throw _privateConstructorUsedError;

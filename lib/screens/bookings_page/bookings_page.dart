@@ -36,38 +36,46 @@ class BookingsPage extends HookWidget {
                     child: ListView(
                       children: [
                         for (var booking in currentBookings) ...[
-                          ListTile(
-                            title: Text(
-                              DateTimeUtils.getDayOfWeek(
-                                booking.datetime!,
+                          Column(
+                            children: [
+                              ListTile(
+                                title: Text(
+                                  DateTimeUtils.getDayOfWeek(
+                                    booking.datetime!,
+                                  ),
+                                ),
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      DateTimeUtils.getDayMonthYear(
+                                        booking.datetime!,
+                                      ),
+                                    ),
+                                    Text(
+                                      DateTimeUtils.getTime(
+                                        booking.datetime!,
+                                      ),
+                                    ),
+                                    Text(
+                                      booking.user!,
+                                      style: TextStyle(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                    Text("Animal: ${booking.animal}"),
+                                    Text("Species: ${booking.species}"),
+                                    Text(booking.visitReason!),
+                                  ],
+                                ),
+                                leading: Icon(Icons.calendar_today_outlined),
+                                trailing: Icon(Icons.check_box),
                               ),
-                            ),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  DateTimeUtils.getDayMonthYear(
-                                    booking.datetime!,
-                                  ),
-                                ),
-                                Text(
-                                  DateTimeUtils.getTime(
-                                    booking.datetime!,
-                                  ),
-                                ),
-                                Text(
-                                  booking.user!,
-                                  style: TextStyle(
-                                      color: Theme.of(context).primaryColor),
-                                ),
-                                Text("Animal: ${booking.animal}"),
-                                Text("Species: ${booking.species}"),
-                                Text(booking.visitReason!),
-                              ],
-                            ),
-                            leading: Icon(Icons.calendar_today_outlined),
-                            trailing: Icon(Icons.check_box),
-                          )
+                              Padding(
+                                padding: const EdgeInsets.only(top: 16),
+                              )
+                            ],
+                          ),
                         ]
                       ],
                     ),

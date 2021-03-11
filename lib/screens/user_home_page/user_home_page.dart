@@ -11,6 +11,11 @@ class UserHomePage extends HookWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return PlatformScaffold(
+      material: (_, __) => MaterialScaffoldData(
+          floatingActionButton: FloatingActionButton(
+        onPressed: () => getIt<NavigationService>().navigateTo(HOME_ROUTE),
+        child: Icon(Icons.home),
+      )),
       appBar: PlatformAppBar(
         title: const Text("Appointments"),
       ),
@@ -19,14 +24,34 @@ class UserHomePage extends HookWidget {
         width: size.width,
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text("User Home Page"),
-            ElevatedButton(
-              onPressed: () =>
-                  getIt<NavigationService>().navigateTo(APPOINTMENT_PAGE_ROUTE),
-              child: Text("Make Appointment"),
-            )
+            Column(
+              children: [
+                ListTile(
+                  title: Text(
+                    "Make Appointment",
+                  ),
+                  onTap: () => getIt<NavigationService>()
+                      .navigateTo(APPOINTMENT_PAGE_ROUTE),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Icon(Icons.payment),
+                      Padding(padding: EdgeInsets.only(left: 15)),
+                      Text(
+                        "Make Payment",
+                      ),
+                    ],
+                  ),
+                  onTap: () =>
+                      getIt<NavigationService>().navigateTo(HOME_ROUTE),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                ),
+              ],
+            ),
           ],
         ),
       ),

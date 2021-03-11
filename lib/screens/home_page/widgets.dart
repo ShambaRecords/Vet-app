@@ -43,75 +43,81 @@ class CustomBottomNavBar extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       GestureDetector(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Icon(
-                              Icons.today_outlined,
-                              color: _bottomNavState == 0
-                                  ? _colors.appThemeAndroid.iconTheme.color
-                                  : Colors.black,
-                            ),
-                            Text(
-                              "Bookings",
-                              style: TextStyle(
-                                fontSize: 12,
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Icon(
+                                Icons.today_outlined,
                                 color: _bottomNavState == 0
                                     ? _colors.appThemeAndroid.iconTheme.color
                                     : Colors.black,
                               ),
-                            )
-                          ],
+                              Text(
+                                "Bookings",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: _bottomNavState == 0
+                                      ? _colors.appThemeAndroid.iconTheme.color
+                                      : Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                         onTap: () {
                           context.read(bottomNavProvider).state = 0;
                         },
                       ),
                       GestureDetector(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Icon(
-                              Icons.payment,
-                              color: _bottomNavState == 1
-                                  ? _colors.appThemeAndroid.iconTheme.color
-                                  : Colors.black,
-                            ),
-                            Text(
-                              "Payments",
-                              style: TextStyle(
-                                fontSize: 12,
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Icon(
+                                Icons.payment,
                                 color: _bottomNavState == 1
                                     ? _colors.appThemeAndroid.iconTheme.color
                                     : Colors.black,
                               ),
-                            )
-                          ],
+                              Text(
+                                "Payments",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: _bottomNavState == 1
+                                      ? _colors.appThemeAndroid.iconTheme.color
+                                      : Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                         onTap: () {
                           context.read(bottomNavProvider).state = 1;
                         },
                       ),
                       GestureDetector(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Icon(
-                              Icons.analytics_outlined,
-                              color: _bottomNavState == 2
-                                  ? _colors.appThemeAndroid.iconTheme.color
-                                  : Colors.black,
-                            ),
-                            Text(
-                              "Reports",
-                              style: TextStyle(
-                                fontSize: 12,
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Icon(
+                                Icons.analytics_outlined,
                                 color: _bottomNavState == 2
                                     ? _colors.appThemeAndroid.iconTheme.color
                                     : Colors.black,
                               ),
-                            )
-                          ],
+                              Text(
+                                "Reports",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: _bottomNavState == 2
+                                      ? _colors.appThemeAndroid.iconTheme.color
+                                      : Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                         onTap: () {
                           context.read(bottomNavProvider).state = 2;

@@ -9,9 +9,11 @@ import 'package:vet_app/domain/blocs/appointment_bloc.dart';
 import 'package:vet_app/domain/providers/appointment/calendar_provider.dart';
 import 'package:vet_app/domain/providers/appointment/time_provider.dart';
 import 'package:vet_app/domain/repository/bookings_repository.dart';
+import 'package:vet_app/res/strings.dart';
 import 'package:vet_app/res/values.dart';
 import 'package:vet_app/screens/apppointment_page/widgets.dart';
 import 'package:vet_app/util/di/injection.dart';
+import 'package:vet_app/util/routing/navigation_service.dart';
 import 'package:vet_app/util/ui/datetimeutil.dart';
 import 'package:vet_app/util/ui/global_widgets.dart';
 
@@ -23,6 +25,7 @@ class AppointmentPage extends HookWidget {
     final theme = Theme.of(context);
     final _focusedDay = useProvider(focusedDateStateProvider).state;
     final selectedTime = useProvider(selectedTimesStateProvider).state;
+    final loaderState = useProvider(loaderStateProvider).state;
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
@@ -183,16 +186,30 @@ class AppointmentPage extends HookWidget {
                       onPressed: snapshot.hasData && snapshot.data == true
                           ? _focusedDay != null
                               ? () async {
+                                  context.read(loaderStateProvider).state =
+                                      true;
                                   String? animal = await bloc.animal.first;
                                   String? species = await bloc.species.first;
                                   String? user = await bloc.user.first;
                                   String? visitReason = await bloc.reason.first;
 
-                                  //TODO: Fix issues with time
-                                  var newBooking = Booking(animal, selectedTime,
-                                      species, user, visitReason);
+                                  var newBooking = Booking(
+                                      animal,
+                                      DateTime(
+                                          _focusedDay.year,
+                                          _focusedDay.month,
+                                          _focusedDay.day,
+                                          selectedTime.hour,
+                                          selectedTime.minute),
+                                      species,
+                                      user,
+                                      visitReason);
                                   getIt<BookingsRepository>()
                                       .addBooking(newBooking);
+                                  context.read(loaderStateProvider).state =
+                                      false;
+                                  getIt<NavigationService>()
+                                      .navigateTo(SUCCESS_PAGE_ROUTE);
                                 }
                               : () {
                                   Fluttertoast.showToast(
@@ -204,7 +221,11 @@ class AppointmentPage extends HookWidget {
                                   msg:
                                       "Please complete filling your details form");
                             },
-                      child: Text("Make Appointment"),
+                      child: loaderState
+                          ? Center(
+                              child: PlatformCircularProgressIndicator(),
+                            )
+                          : Text("Make Appointment"),
                     );
                   }),
             ),

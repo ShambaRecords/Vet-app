@@ -19,7 +19,7 @@ _$_Booking _$_$_BookingFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_BookingToJson(_$_Booking instance) =>
     <String, dynamic>{
       'animal': instance.animal,
-      'datetime': instance.datetime?.toIso8601String(),
+      'datetime': _timeStampToDateTime(instance.datetime),
       'species': instance.species,
       'user': instance.user,
       'visit_reason': instance.visitReason,
@@ -49,7 +49,7 @@ _$_Payment _$_$_PaymentFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_PaymentToJson(_$_Payment instance) =>
     <String, dynamic>{
       'amount': instance.amount,
-      'datetime': instance.datetime?.toIso8601String(),
+      'datetime': _timeStampToDateTime(instance.datetime),
       'user': instance.user,
       'type': instance.type,
       'service': instance.service,

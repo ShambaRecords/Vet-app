@@ -15,7 +15,6 @@ class BookingCalendar extends HookWidget {
   Widget build(BuildContext context) {
     final _colors = useProvider(colorProvider);
     final _selectedDay = useProvider(selectedDateStateProvider).state;
-    final _focusedDay = useProvider(focusedDateStateProvider).state;
 
     return Material(
       color: _colors.appThemeAndroid.scaffoldBackgroundColor,

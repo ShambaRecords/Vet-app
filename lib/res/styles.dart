@@ -57,12 +57,11 @@ ThemeData lightAppThemeAndroid = ThemeData(
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
-      // backgroundColor: MaterialStateProperty.all<Color>(primaryColorAccent),
-      backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+      backgroundColor: MaterialStateProperty.all<Color>(primaryColorAccent),
       textStyle: MaterialStateProperty.all<TextStyle>(
         TextStyle(color: Colors.white),
-        
       ),
+      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
     ),
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(

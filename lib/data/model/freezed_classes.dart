@@ -9,7 +9,7 @@ part 'freezed_classes.g.dart';
 class Booking with _$Booking {
   const factory Booking(
     String? animal,
-    @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+    @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
         DateTime? datetime,
     String? species,
     String? user,
@@ -21,6 +21,7 @@ class Booking with _$Booking {
 }
 
 DateTime _dateTimeFromTimeStamp(Timestamp timestamp) => timestamp.toDate();
+Timestamp _timeStampToDateTime(DateTime? date) => Timestamp.fromDate(date!);
 
 @freezed
 class Specialist with _$Specialist {
@@ -36,7 +37,7 @@ class Specialist with _$Specialist {
 class Payment with _$Payment {
   const factory Payment(
     double? amount,
-    @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp)
+    @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
         DateTime? datetime,
     String? user,
     String? type,
