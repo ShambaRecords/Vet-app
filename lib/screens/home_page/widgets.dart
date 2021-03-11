@@ -54,7 +54,12 @@ class CustomBottomNavBar extends HookWidget {
                             ),
                             Text(
                               "Bookings",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: _bottomNavState == 0
+                                    ? _colors.appThemeAndroid.iconTheme.color
+                                    : Colors.black,
+                              ),
                             )
                           ],
                         ),
@@ -74,7 +79,12 @@ class CustomBottomNavBar extends HookWidget {
                             ),
                             Text(
                               "Payments",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: _bottomNavState == 1
+                                    ? _colors.appThemeAndroid.iconTheme.color
+                                    : Colors.black,
+                              ),
                             )
                           ],
                         ),
@@ -94,7 +104,12 @@ class CustomBottomNavBar extends HookWidget {
                             ),
                             Text(
                               "Reports",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: _bottomNavState == 2
+                                    ? _colors.appThemeAndroid.iconTheme.color
+                                    : Colors.black,
+                              ),
                             )
                           ],
                         ),

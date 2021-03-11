@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vet_app/data/model/specialist.dart';
+import 'package:vet_app/data/model/freezed_classes.dart';
 import 'package:vet_app/domain/providers/global/color_provider.dart';
 import 'package:vet_app/res/styles.dart';
 

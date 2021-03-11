@@ -25,10 +25,13 @@ dependencies:
   table_calendar: ^3.0.0-nullsafety.1
   intl: ^0.17.0
   fluttertoast: ^8.0.1-nullsafety.0
+  freezed_annotation:
+
 
   #Firebase
   firebase_core: ^1.0.0
   firebase_auth: ^1.0.0
+  cloud_firestore: ^1.0.1
   
 
 dev_dependencies:
@@ -36,6 +39,8 @@ dev_dependencies:
     sdk: flutter
   build_runner:
   injectable_generator: ^1.2.0
+  json_serializable: ^4.0.2
+  freezed: ^0.14.0+1
 
 flutter:
   uses-material-design: true

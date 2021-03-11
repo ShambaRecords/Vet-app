@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:vet_app/data/model/specialist.dart';
+import 'package:vet_app/data/model/freezed_classes.dart';
 import 'package:vet_app/res/strings.dart';
 import 'package:vet_app/screens/apppointment_page/widgets.dart';
 import 'package:vet_app/util/di/injection.dart';
@@ -21,7 +21,7 @@ class AppointmentPage extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            BookingCalendar(specialist: Specialist()),
+            BookingCalendar(specialist: Specialist("Random")),
             Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
