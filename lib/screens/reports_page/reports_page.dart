@@ -6,8 +6,8 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:vet_app/data/model/freezed_classes.dart';
 import 'package:vet_app/domain/providers/home/payments_provider.dart';
+import 'package:vet_app/model/freezed_classes.dart';
 import 'package:vet_app/res/styles.dart';
 import 'package:vet_app/util/ui/datetimeutil.dart';
 
