@@ -3,14 +3,17 @@
 Flutter vet application. This is a technical test for Shamba records.
 
 ## Getting Started
+1. Make sure you have the latest version of flutter installed. At the very least a version with null safety. Run `flutter upgrade`.
+2. Pull the branch to your local drive.
+3. 
 
-This project is a starting point for a Flutter application.
+## ScreenShots
+ <img src="https://user-images.githubusercontent.com/33759757/110953506-7d734880-8358-11eb-8f86-284264146c8a.png" width="300" height="550"> |
+ <img src="https://user-images.githubusercontent.com/33759757/110953512-7ea47580-8358-11eb-806b-e99d6654cb45.png" width="300" height="550"> 
+ <img src="https://user-images.githubusercontent.com/33759757/110953514-7f3d0c00-8358-11eb-815e-fa635032de2f.png" width="300" height="550"> 
+ <img src="https://user-images.githubusercontent.com/33759757/110953516-7fd5a280-8358-11eb-86e9-b47ad6f69936.png" width="300" height="550"> 
+ <img src="https://user-images.githubusercontent.com/33759757/110953518-806e3900-8358-11eb-9855-b56a387bf381.png" width="300" height="550"> 
+ <img src="https://user-images.githubusercontent.com/33759757/110953523-819f6600-8358-11eb-99b3-975510e6ae9d.png" width="300" height="550"> 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
