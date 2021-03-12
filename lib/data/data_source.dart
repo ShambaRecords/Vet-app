@@ -134,12 +134,13 @@ List<Payment> generatePayments(){
 
   List<Payment> paymentsList = [];
 
-  paymentsList.add(Payment(paymentId: "1", appointmentId: "1", amountPaid: 800, date: date));
-  paymentsList.add(Payment(paymentId: "2", appointmentId: "2", amountPaid: 1500, date: date));
-  paymentsList.add(Payment(paymentId: "3", appointmentId: "3", amountPaid: 1200, date: date));
-  paymentsList.add(Payment(paymentId: "4", appointmentId: "4", amountPaid: 5200, date: date));
-  paymentsList.add(Payment(paymentId: "5", appointmentId: "5", amountPaid: 7600, date: date));
-  paymentsList.add(Payment(paymentId: "6", appointmentId: "6", amountPaid: 2300, date: date));
+  paymentsList.add(Payment(paymentId: "1", appointmentId: "1", amountPaid: 800, date: Config.stringToDate("2021-03-12 13:50:00")));
+  paymentsList.add(Payment(paymentId: "2", appointmentId: "2", amountPaid: 1500, date: Config.stringToDate("2021-03-12 01:50:00")));
+  paymentsList.add(Payment(paymentId: "3", appointmentId: "3", amountPaid: 1200, date: Config.stringToDate("2021-03-12 10:36:00")));
+  paymentsList.add(Payment(paymentId: "4", appointmentId: "4", amountPaid: 5200, date: Config.stringToDate("2021-03-13 13:50:00")));
+  paymentsList.add(Payment(paymentId: "5", appointmentId: "5", amountPaid: 7600, date: Config.stringToDate("2021-03-14 15:22:00")));
+  paymentsList.add(Payment(paymentId: "6", appointmentId: "6", amountPaid: 7600, date: Config.stringToDate("2021-03-14 06:45:00")));
+  paymentsList.add(Payment(paymentId: "7", appointmentId: "7", amountPaid: 2300, date: Config.stringToDate("2021-03-15 09:06:00")));
 
   return paymentsList;
 }
