@@ -13,7 +13,7 @@ class DashBoard extends StatefulWidget {
   _DashBoardState createState() => _DashBoardState();
 }
 
-class _DashBoardState extends State<DashBoard> implements View<AppointmentsViewModel> {
+class _DashBoardState extends State<DashBoard> implements {
   List<Appointment> appointmentsList = generateAppointments();
   List<Appointment> filteredAppointments = [];
 
