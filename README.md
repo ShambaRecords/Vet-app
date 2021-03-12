@@ -7,6 +7,8 @@ Flutter vet application. This is a technical test for Shamba records.
 2. Pull the branch to your local drive.
 3. Run the app through your IDE or using `flutter run` depending on your preference.
 
+In case of trouble with the firebase connection kindly contact me and I will help fix any issues.
+
 ## NB: You will need an Android phone or Emulator to fully test the app. I have only set up firebase for android devices and the application does not work without its firestore backend.
 
 # ScreenShots
@@ -17,5 +19,5 @@ Flutter vet application. This is a technical test for Shamba records.
  <img src="https://user-images.githubusercontent.com/33759757/110953518-806e3900-8358-11eb-9855-b56a387bf381.png" width="300" height="550"> 
  <img src="https://user-images.githubusercontent.com/33759757/110953523-819f6600-8358-11eb-99b3-975510e6ae9d.png" width="300" height="550"> 
 
-In case of trouble with the firebase connection kindly contact me and I will help fix any issues.
+
 
