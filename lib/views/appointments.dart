@@ -112,7 +112,7 @@ class _AppointmentsState extends State<Appointments> {
                                               fontSize: 15, color: Color(0xFF000000).withOpacity(0.7)),
                                           overflow: TextOverflow.ellipsis,
                                         ),
-                                      )
+                                      ),
                                     ],
                                   )
                                 ],

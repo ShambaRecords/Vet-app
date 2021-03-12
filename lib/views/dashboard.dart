@@ -113,7 +113,14 @@ class _DashBoardState extends State<DashBoard> {
                     String dateString = thisDate.toLocal().toString();
                     return TimelineTile(
                       indicatorStyle: IndicatorStyle(
-                        width: 18,
+                        width: 15,
+                        color: colorPrimary,
+                      ),
+                      afterLineStyle: LineStyle(
+                        color: colorSecondary
+                      ),
+                      beforeLineStyle: LineStyle(
+                          color: colorSecondary
                       ),
                       hasIndicator: true,
                       isFirst: index == 0,
@@ -162,14 +169,32 @@ class _DashBoardState extends State<DashBoard> {
                                             SizedBox(
                                               height: 5,
                                             ),
+                                            Text(
+                                              filteredAppointments[index].animalName.substring(0,1).toUpperCase() +
+                                                  filteredAppointments[index].animalName.substring(1),
+                                              style:
+                                              TextStyle(fontSize: 15, fontWeight: FontWeight.w300),
+                                            ),
                                             SizedBox(
-                                              child: Text(
-                                                dateString,
-                                                style: TextStyle(
-                                                    fontSize: 15, color: Color(0xFF000000).withOpacity(0.7)),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            )
+                                              height: 5,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.location_on,
+                                                  size: 15,
+                                                ),
+                                                SizedBox(
+                                                  child: Text(
+                                                    filteredAppointments[index].location.substring(0,1).toUpperCase() +
+                                                        filteredAppointments[index].location.substring(1),
+                                                    style: TextStyle(
+                                                        fontSize: 15, color: Color(0xFF000000).withOpacity(0.7)),
+                                                    overflow: TextOverflow.ellipsis,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ],
                                         )
                                       ],
@@ -183,6 +208,9 @@ class _DashBoardState extends State<DashBoard> {
                       startChild: Center(
                         child: Text(
                           Config.dateToTimeString(filteredAppointments[index].dateTime),
+                          style: TextStyle(
+                            color: colorPrimary
+                          ),
                         ),
                       ),
                     );
