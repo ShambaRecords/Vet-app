@@ -7,6 +7,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:vet_app/res/strings.dart';
 import 'package:vet_app/screens/apppointment_page/appointment_page.dart';
 import 'package:vet_app/screens/home_page/home_page.dart';
+import 'package:vet_app/screens/make_payment_page/make_payment_page.dart';
 import 'package:vet_app/screens/settings_page/settings_page.dart';
 import 'package:vet_app/screens/success_page/success_page.dart';
 import 'package:vet_app/screens/user_home_page/user_home_page.dart';
@@ -26,6 +27,8 @@ class RouteGenerator {
         return _returnPage(AppointmentPage());
       case SUCCESS_PAGE_ROUTE:
         return _returnPage(SuccessPage());
+      case MAKE_PAYMENT_PAGE_ROUTE:
+        return _returnPage(MakePaymentPage());
 
       default:
         return _errorRoute(settings.name);

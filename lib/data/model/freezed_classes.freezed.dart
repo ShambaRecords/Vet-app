@@ -21,18 +21,22 @@ class _$BookingTearOff {
   const _$BookingTearOff();
 
   _Booking call(
+      String? id,
       String? animal,
       @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? species,
       String? user,
+      bool? paid,
       @JsonKey(name: "visit_reason")
           String? visitReason) {
     return _Booking(
+      id,
       animal,
       datetime,
       species,
       user,
+      paid,
       visitReason,
     );
   }
@@ -47,6 +51,7 @@ const $Booking = _$BookingTearOff();
 
 /// @nodoc
 mixin _$Booking {
+  String? get id => throw _privateConstructorUsedError;
   String? get animal => throw _privateConstructorUsedError;
   @JsonKey(
       name: "datetime",
@@ -55,6 +60,7 @@ mixin _$Booking {
   DateTime? get datetime => throw _privateConstructorUsedError;
   String? get species => throw _privateConstructorUsedError;
   String? get user => throw _privateConstructorUsedError;
+  bool? get paid => throw _privateConstructorUsedError;
   @JsonKey(name: "visit_reason")
   String? get visitReason => throw _privateConstructorUsedError;
 
@@ -68,11 +74,13 @@ abstract class $BookingCopyWith<$Res> {
   factory $BookingCopyWith(Booking value, $Res Function(Booking) then) =
       _$BookingCopyWithImpl<$Res>;
   $Res call(
-      {String? animal,
+      {String? id,
+      String? animal,
       @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? species,
       String? user,
+      bool? paid,
       @JsonKey(name: "visit_reason")
           String? visitReason});
 }
@@ -87,13 +95,19 @@ class _$BookingCopyWithImpl<$Res> implements $BookingCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? animal = freezed,
     Object? datetime = freezed,
     Object? species = freezed,
     Object? user = freezed,
+    Object? paid = freezed,
     Object? visitReason = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       animal: animal == freezed
           ? _value.animal
           : animal // ignore: cast_nullable_to_non_nullable
@@ -110,6 +124,10 @@ class _$BookingCopyWithImpl<$Res> implements $BookingCopyWith<$Res> {
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as String?,
+      paid: paid == freezed
+          ? _value.paid
+          : paid // ignore: cast_nullable_to_non_nullable
+              as bool?,
       visitReason: visitReason == freezed
           ? _value.visitReason
           : visitReason // ignore: cast_nullable_to_non_nullable
@@ -124,11 +142,13 @@ abstract class _$BookingCopyWith<$Res> implements $BookingCopyWith<$Res> {
       __$BookingCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? animal,
+      {String? id,
+      String? animal,
       @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? species,
       String? user,
+      bool? paid,
       @JsonKey(name: "visit_reason")
           String? visitReason});
 }
@@ -144,13 +164,19 @@ class __$BookingCopyWithImpl<$Res> extends _$BookingCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? animal = freezed,
     Object? datetime = freezed,
     Object? species = freezed,
     Object? user = freezed,
+    Object? paid = freezed,
     Object? visitReason = freezed,
   }) {
     return _then(_Booking(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       animal == freezed
           ? _value.animal
           : animal // ignore: cast_nullable_to_non_nullable
@@ -167,6 +193,10 @@ class __$BookingCopyWithImpl<$Res> extends _$BookingCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as String?,
+      paid == freezed
+          ? _value.paid
+          : paid // ignore: cast_nullable_to_non_nullable
+              as bool?,
       visitReason == freezed
           ? _value.visitReason
           : visitReason // ignore: cast_nullable_to_non_nullable
@@ -180,17 +210,21 @@ class __$BookingCopyWithImpl<$Res> extends _$BookingCopyWithImpl<$Res>
 /// @nodoc
 class _$_Booking with DiagnosticableTreeMixin implements _Booking {
   const _$_Booking(
+      this.id,
       this.animal,
       @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           this.datetime,
       this.species,
       this.user,
+      this.paid,
       @JsonKey(name: "visit_reason")
           this.visitReason);
 
   factory _$_Booking.fromJson(Map<String, dynamic> json) =>
       _$_$_BookingFromJson(json);
 
+  @override
+  final String? id;
   @override
   final String? animal;
   @override
@@ -204,12 +238,14 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
   @override
   final String? user;
   @override
+  final bool? paid;
+  @override
   @JsonKey(name: "visit_reason")
   final String? visitReason;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Booking(animal: $animal, datetime: $datetime, species: $species, user: $user, visitReason: $visitReason)';
+    return 'Booking(id: $id, animal: $animal, datetime: $datetime, species: $species, user: $user, paid: $paid, visitReason: $visitReason)';
   }
 
   @override
@@ -217,10 +253,12 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Booking'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('animal', animal))
       ..add(DiagnosticsProperty('datetime', datetime))
       ..add(DiagnosticsProperty('species', species))
       ..add(DiagnosticsProperty('user', user))
+      ..add(DiagnosticsProperty('paid', paid))
       ..add(DiagnosticsProperty('visitReason', visitReason));
   }
 
@@ -228,6 +266,8 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Booking &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.animal, animal) ||
                 const DeepCollectionEquality().equals(other.animal, animal)) &&
             (identical(other.datetime, datetime) ||
@@ -238,6 +278,8 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
                     .equals(other.species, species)) &&
             (identical(other.user, user) ||
                 const DeepCollectionEquality().equals(other.user, user)) &&
+            (identical(other.paid, paid) ||
+                const DeepCollectionEquality().equals(other.paid, paid)) &&
             (identical(other.visitReason, visitReason) ||
                 const DeepCollectionEquality()
                     .equals(other.visitReason, visitReason)));
@@ -246,10 +288,12 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(animal) ^
       const DeepCollectionEquality().hash(datetime) ^
       const DeepCollectionEquality().hash(species) ^
       const DeepCollectionEquality().hash(user) ^
+      const DeepCollectionEquality().hash(paid) ^
       const DeepCollectionEquality().hash(visitReason);
 
   @JsonKey(ignore: true)
@@ -265,16 +309,20 @@ class _$_Booking with DiagnosticableTreeMixin implements _Booking {
 
 abstract class _Booking implements Booking {
   const factory _Booking(
+      String? id,
       String? animal,
       @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
           DateTime? datetime,
       String? species,
       String? user,
+      bool? paid,
       @JsonKey(name: "visit_reason")
           String? visitReason) = _$_Booking;
 
   factory _Booking.fromJson(Map<String, dynamic> json) = _$_Booking.fromJson;
 
+  @override
+  String? get id => throw _privateConstructorUsedError;
   @override
   String? get animal => throw _privateConstructorUsedError;
   @override
@@ -287,6 +335,8 @@ abstract class _Booking implements Booking {
   String? get species => throw _privateConstructorUsedError;
   @override
   String? get user => throw _privateConstructorUsedError;
+  @override
+  bool? get paid => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: "visit_reason")
   String? get visitReason => throw _privateConstructorUsedError;

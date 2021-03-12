@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:vet_app/res/values.dart';
 
 @injectable
 class AppointmentBloc {

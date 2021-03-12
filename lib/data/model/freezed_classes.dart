@@ -8,11 +8,13 @@ part 'freezed_classes.g.dart';
 @freezed
 class Booking with _$Booking {
   const factory Booking(
+    String? id,
     String? animal,
     @JsonKey(name: "datetime", fromJson: _dateTimeFromTimeStamp, toJson: _timeStampToDateTime)
         DateTime? datetime,
     String? species,
     String? user,
+    bool? paid,
     @JsonKey(name: "visit_reason") String? visitReason,
   ) = _Booking;
 

@@ -22,18 +22,22 @@ class ApiBaseProvider implements ApiBase {
 
   @override
   Future update(String url, final data, bool isDocument) async {
+    print("path is $url");
     if (isDocument) {
       await FirebaseFirestore.instance.doc(url).update(data);
     } else {
-      //TODO: Check this twice
       await FirebaseFirestore.instance.collection(url).add(data);
     }
   }
 
   @override
-  delete(String url, bool isDocument) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future delete(String url, bool isDocument) async {
+    if (isDocument) {
+      await FirebaseFirestore.instance.doc(url).delete();
+    } else {
+      //TODO: Implement the exception(throw)
+      print("Deleting collections is not allowed");
+    }
   }
 
   @override
@@ -43,6 +47,7 @@ class ApiBaseProvider implements ApiBase {
         ? FirebaseFirestore.instance.doc(url).snapshots()
         : FirebaseFirestore.instance
             .collection(url)
-            .where('datetime', isGreaterThan: startTime, isLessThan: endTime).snapshots();
+            .where('datetime', isGreaterThan: startTime, isLessThan: endTime)
+            .snapshots();
   }
 }

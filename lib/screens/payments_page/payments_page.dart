@@ -38,8 +38,8 @@ class PaymentsPage extends HookWidget {
                             children: [
                               for (var payment in currentPayments) ...[
                                 ListTile(
-                                  title:
-                                      Text("${payment.type} Payment - ${payment.user}"),
+                                  title: Text(
+                                      "${payment.type} Payment - ${payment.user}"),
                                   subtitle: Text("Ksh. ${payment.amount}"),
                                   leading: Icon(Icons.payment),
                                 ),

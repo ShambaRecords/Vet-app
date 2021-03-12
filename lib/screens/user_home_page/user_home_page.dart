@@ -47,7 +47,7 @@ class UserHomePage extends HookWidget {
                     ],
                   ),
                   onTap: () =>
-                      getIt<NavigationService>().navigateTo(HOME_ROUTE),
+                      getIt<NavigationService>().navigateTo(MAKE_PAYMENT_PAGE_ROUTE),
                   trailing: Icon(Icons.keyboard_arrow_right),
                 ),
               ],

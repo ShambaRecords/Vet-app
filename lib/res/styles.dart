@@ -14,7 +14,6 @@ const Color raisinBlack = Color.fromARGB(255, 36, 35, 37);
 
 List<Color> colorList = [
   primaryColor,
-  primaryColorDarkShade,
   primaryColorAccent,
   primaryContrastingColor,
   paletteRed,
