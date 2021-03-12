@@ -130,39 +130,41 @@ class MakePaymentPage extends HookWidget {
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 20.0),
-              child: ElevatedButton(
-                onPressed: () async {
-                  context.read(loaderStateProvider).state = true;
-
-                  if (selectedBooking == null) {
-                    Fluttertoast.showToast(
-                        msg: "Please select an appointment to pay for");
-                    context.read(loaderStateProvider).state = false;
-                    return;
-                  }
-
-                  var newPayment = Payment(
-                      servicesMap[selectedBooking.visitReason],
-                      DateTime.now(),
-                      selectedBooking.user,
-                      "M-pesa",
-                      selectedBooking.visitReason);
-                  await getIt<PaymentsRepository>().addPayment(newPayment);
-                  await getIt<BookingsRepository>()
-                      .updatePaymentState(selectedBooking.id!, {"paid": true});
-                  context.read(loaderStateProvider).state = false;
-                  Fluttertoast.showToast(msg: "Payment Successful");
-                  getIt<NavigationService>().navigateTo(HOME_ROUTE);
-                },
-                child: loaderState
-                    ? Center(
-                        child: Container(
-                          height: 100,
-                          width: 100,
+              child: loaderState
+                  ? Center(
+                      child: Container(
+                        height: 50,
+                        width: 50,
                         child: PlatformCircularProgressIndicator(),
-                      ))
-                    : Text("Make Payment"),
-              ),
+                      ),
+                    )
+                  : ElevatedButton(
+                      onPressed: () async {
+                        context.read(loaderStateProvider).state = true;
+
+                        if (selectedBooking == null) {
+                          Fluttertoast.showToast(
+                              msg: "Please select an appointment to pay for");
+                          context.read(loaderStateProvider).state = false;
+                          return;
+                        }
+
+                        var newPayment = Payment(
+                            servicesMap[selectedBooking.visitReason],
+                            DateTime.now(),
+                            selectedBooking.user,
+                            "M-pesa",
+                            selectedBooking.visitReason);
+                        await getIt<PaymentsRepository>()
+                            .addPayment(newPayment);
+                        await getIt<BookingsRepository>().updatePaymentState(
+                            selectedBooking.id!, {"paid": true});
+                        context.read(loaderStateProvider).state = false;
+                        Fluttertoast.showToast(msg: "Payment Successful");
+                        getIt<NavigationService>().navigateTo(HOME_ROUTE);
+                      },
+                      child: Text("Make Payment"),
+                    ),
             ),
           ),
         ],

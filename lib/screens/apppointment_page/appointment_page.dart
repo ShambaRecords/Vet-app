@@ -115,8 +115,6 @@ class AppointmentPage extends HookWidget {
                                             .state = 0;
                                       }
                                     : () {
-                                        print(snapshot.hasData);
-                                        print(snapshot.data);
                                         Fluttertoast.showToast(
                                             msg:
                                                 "Please complete filling your details form");
