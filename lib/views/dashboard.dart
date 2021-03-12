@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mvvm/mvvm.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:vet_app/data/config.dart';
 import 'package:vet_app/data/data_source.dart';
@@ -13,7 +12,7 @@ class DashBoard extends StatefulWidget {
   _DashBoardState createState() => _DashBoardState();
 }
 
-class _DashBoardState extends State<DashBoard> implements {
+class _DashBoardState extends State<DashBoard> {
   List<Appointment> appointmentsList = generateAppointments();
   List<Appointment> filteredAppointments = [];
 
@@ -70,7 +69,7 @@ class _DashBoardState extends State<DashBoard> implements {
                 ),
                 SizedBox(height: 10,),
                 Text(
-                  "Dr. Kowalski",
+                  "Dr. Kimani",
                   style: TextStyle(
                     color: colorText,
                     fontSize: 38,
@@ -88,13 +87,6 @@ class _DashBoardState extends State<DashBoard> implements {
                   ),
                 ),
                 SizedBox(height: 20),
-                Text(
-                  ,
-                  style: TextStyle(
-                    color: colorText,
-                    fontSize: 38,
-                  ),
-                ),
               ],
             ),
           ),
