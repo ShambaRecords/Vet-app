@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
 class Payment{
-  String paymentId, appointmentId, amountPaid, date;
+  String paymentId, appointmentId;
+  int amountPaid;
+  DateTime date;
 
   Payment({
     @required this.paymentId,

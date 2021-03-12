@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Config{
   Config._();
 
@@ -23,7 +25,27 @@ class Config{
     return url;
   }
 
-  static void displayNotification(){
+  static String validateDob(String value){
+    if (value.isEmpty){
+      return 'Please select valid dates';
+    } else {
+      return null;
+    }
+  }
 
+  static String dateToString(DateTime date){
+    return DateFormat('yyyy-MM-dd').format(date);
+  }
+
+  static String dateToStringWithTime(DateTime date){
+    return DateFormat('dd MMMM yyyy').format(date) + " at " +DateFormat('HH:mm').format(date);
+  }
+
+  static String dateToTimeString(DateTime date){
+    return DateFormat('HH:mm').format(date);
+  }
+
+  static DateTime stringToDate(String date){
+    return DateTime.parse(date);
   }
 }

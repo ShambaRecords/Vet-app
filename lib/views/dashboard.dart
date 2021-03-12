@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mvvm/mvvm.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:vet_app/data/config.dart';
 import 'package:vet_app/data/data_source.dart';
@@ -12,31 +13,58 @@ class DashBoard extends StatefulWidget {
   _DashBoardState createState() => _DashBoardState();
 }
 
-class _DashBoardState extends State<DashBoard> {
-  List<Appointment> _appointmentsList = generateAppointments();
+class _DashBoardState extends State<DashBoard> implements View<AppointmentsViewModel> {
+  List<Appointment> appointmentsList = generateAppointments();
+  List<Appointment> filteredAppointments = [];
+
+  Future<void> getTodayAppointments () async {
+    // Find today items and add them to filtered list
+    appointmentsList.forEach((element) {
+      if (Config.dateToString(element.dateTime) == "2021-03-12"){
+        setState(() {
+          filteredAppointments.add(element);
+        });
+      }
+    });
+  }
 
 
   @override
-  Widget build(BuildContext context) {
-    List<String> list = ["9:00", "10:00", "11:00", "12:00", "1:00", "2:00", "3:00"];
+  void initState() {
+    super.initState();
 
+    // Get today's appointments
+    getTodayAppointments();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
-            height: 250,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15)),
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(55), bottomRight: Radius.circular(55)),
               color: colorSecondary,
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              "https://randomuser.me/api/portraits/men/11.jpg"),
+                          fit: BoxFit.cover)),
+                ),
                 Text(
                   "Welcome back",
                   style: TextStyle(
-                    color: Colors.grey[400],
+                    color: Colors.grey[100],
                     fontSize: 22,
                   ),
                 ),
@@ -47,24 +75,24 @@ class _DashBoardState extends State<DashBoard> {
                     color: colorText,
                     fontSize: 38,
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            margin: EdgeInsets.all(5),
-            height: 100,
-            decoration: nMbox,
-            child: Column(
-              children: <Widget>[
+                ),
+                SizedBox(height: 10),
                 Text(
-                  "Today's Overview",
+                  "You have ${filteredAppointments.length} appointments today "
+                      "and your first appointment is at ${Config.dateToTimeString(filteredAppointments[0].dateTime)}.",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: colorGrayDarker,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 26
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18
+                  ),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  ,
+                  style: TextStyle(
+                    color: colorText,
+                    fontSize: 38,
                   ),
                 ),
               ],
@@ -79,7 +107,7 @@ class _DashBoardState extends State<DashBoard> {
             child: Column(
               children: [
                 Text(
-                  "Today's Appointments",
+                  "Upcoming Appointments",
                   style: TextStyle(
                       color: colorGrayDarker,
                       fontWeight: FontWeight.w700,
@@ -87,97 +115,106 @@ class _DashBoardState extends State<DashBoard> {
                   ),
                 ),
                 SizedBox(height: 10),
-                LimitedBox(
-                  maxHeight: 400,
-                  child: ListView(
-                    children: List.generate(_appointmentsList.length, (index) {
-                      DateTime thisDate = _appointmentsList[index].dateTime;
-                      String dateString = thisDate.toLocal().toString();
-                      return TimelineTile(
-                        indicatorStyle: IndicatorStyle(
-                          width: 18,
-                        ),
-                        hasIndicator: true,
-                        isFirst: index == 0,
-                        isLast: index == _appointmentsList.length - 1,
-                        alignment: TimelineAlign.manual,
-                        lineXY: 0.16,
-                        endChild: Column(
-                          children: List.generate(1, (anotherIndex) {
-                            return Container(
-                                margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                padding: EdgeInsets.all(5),
-                                decoration: nMboxInvert,
-                                child: Row(
-                                  children: [
-                                    InkWell(
-                                      child: Row(
-                                        children: <Widget>[
-                                          Container(
-                                            width: 60,
-                                            height: 60,
-                                            child: Container(
-                                              width: 70,
-                                              height: 70,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.rectangle,
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                        "assets/icons/${Config.returnAnimalIcon(_appointmentsList[index].animalName)}",
-                                                      ),
-                                                      fit: BoxFit.scaleDown
-                                                  )
-                                              ),
+                filteredAppointments.length > 0 ? Column(
+                  children: List.generate(filteredAppointments.length, (index) {
+                    DateTime thisDate = filteredAppointments[index].dateTime;
+                    String dateString = thisDate.toLocal().toString();
+                    return TimelineTile(
+                      indicatorStyle: IndicatorStyle(
+                        width: 18,
+                      ),
+                      hasIndicator: true,
+                      isFirst: index == 0,
+                      isLast: index == filteredAppointments.length - 1,
+                      alignment: TimelineAlign.manual,
+                      lineXY: 0.16,
+                      endChild: Column(
+                        children: List.generate(1, (anotherIndex) {
+                          return Container(
+                              margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                              padding: EdgeInsets.all(5),
+                              decoration: nMboxInvert,
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          width: 60,
+                                          height: 60,
+                                          child: Container(
+                                            width: 70,
+                                            height: 70,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.rectangle,
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                      "assets/icons/${Config.returnAnimalIcon(filteredAppointments[index].animalName)}",
+                                                    ),
+                                                    fit: BoxFit.scaleDown
+                                                )
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                _appointmentsList[index].ownerName,
-                                                style:
-                                                TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              filteredAppointments[index].ownerName,
+                                              style:
+                                              TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            SizedBox(
+                                              child: Text(
+                                                dateString,
+                                                style: TextStyle(
+                                                    fontSize: 15, color: Color(0xFF000000).withOpacity(0.7)),
+                                                overflow: TextOverflow.ellipsis,
                                               ),
-                                              SizedBox(
-                                                height: 5,
-                                              ),
-                                              SizedBox(
-                                                child: Text(
-                                                  dateString,
-                                                  style: TextStyle(
-                                                      fontSize: 15, color: Color(0xFF000000).withOpacity(0.7)),
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                )
-                            );
-                          }),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              )
+                          );
+                        }),
+                      ),
+                      startChild: Center(
+                        child: Text(
+                          Config.dateToTimeString(filteredAppointments[index].dateTime),
                         ),
-                        startChild: Center(
-                          child: Text(
-                            list[index],
-                          ),
-                        ),
-                      );
-                    }),
+                      ),
+                    );
+                  }),
+                ) :
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0x42ffff40),
                   ),
-                ),
+                  child: Center(
+                    child: Text(
+                      "You have no appointments today",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            height: 300,
           ),
         ),
       ],

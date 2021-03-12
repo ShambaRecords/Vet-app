@@ -1,4 +1,6 @@
+import 'package:vet_app/data/config.dart';
 import 'package:vet_app/model/appointment_model.dart';
+import 'package:vet_app/model/payments_model.dart';
 
 final List conversationList = [
   {
@@ -71,32 +73,73 @@ List<Appointment> generateAppointments(){
   List<Appointment> appointmentList = [];
 
   DateTime now = new DateTime.now();
-  DateTime date = new DateTime(now.year, now.month, now.day, now.hour, now.minute);
+  DateTime date = Config.stringToDate("2021-03-12");
 
-  appointmentList.add(new Appointment(id: "1", dateTime: date, animalName: "dog",
+  appointmentList.add(new Appointment(id: "1", dateTime: Config.stringToDate('2021-03-12 09:00:00'), animalName: "dog",
       ownerName: "Novac", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
-      animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
+      animalWeight: "28", appointmentStatus: "completed", appointmentType: "checkup", location: "clinic"
   ));
 
-  appointmentList.add(new Appointment(id: "2", dateTime: date, animalName: "cow",
+  appointmentList.add(new Appointment(id: "2", dateTime: Config.stringToDate('2021-03-12 11:00:00'), animalName: "cow",
       ownerName: "Derrick", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
       animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
   ));
 
-  appointmentList.add(new Appointment(id: "3", dateTime: date, animalName: "cat",
+  appointmentList.add(new Appointment(id: "3", dateTime: Config.stringToDate('2021-03-12 12:20:00'), animalName: "cat",
       ownerName: "Mevis", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
-      animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
+      animalWeight: "28", appointmentStatus: "completed", appointmentType: "checkup", location: "clinic"
   ));
 
-  appointmentList.add(new Appointment(id: "4", dateTime: date, animalName: "pig",
+  appointmentList.add(new Appointment(id: "4", dateTime: Config.stringToDate('2021-03-12 14:30:00'), animalName: "pig",
       ownerName: "Emmanuel", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
-      animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
+      animalWeight: "28", appointmentStatus: "cancelled", appointmentType: "checkup", location: "clinic"
   ));
 
-  appointmentList.add(new Appointment(id: "5", dateTime: date, animalName: "dog",
+  appointmentList.add(new Appointment(id: "5", dateTime: Config.stringToDate('2021-03-13 11:00:00'), animalName: "dog",
       ownerName: "Gracy", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
       animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
   ));
 
+  appointmentList.add(new Appointment(id: "1", dateTime: Config.stringToDate('2021-03-13 13:50:00'), animalName: "dog",
+      ownerName: "Jeremy", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
+      animalWeight: "28", appointmentStatus: "completed", appointmentType: "checkup", location: "clinic"
+  ));
+
+  appointmentList.add(new Appointment(id: "2", dateTime: Config.stringToDate('2021-03-13 13:50:00'), animalName: "cow",
+      ownerName: "Clark", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
+      animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
+  ));
+
+  appointmentList.add(new Appointment(id: "3", dateTime: Config.stringToDate('2021-03-13 15:00:00'), animalName: "cat",
+      ownerName: "Zucker", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
+      animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
+  ));
+
+  appointmentList.add(new Appointment(id: "4", dateTime: Config.stringToDate('2021-03-14 13:50:00'), animalName: "pig",
+      ownerName: "George", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
+      animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
+  ));
+
+  appointmentList.add(new Appointment(id: "5", dateTime: Config.stringToDate('2021-03-15 13:50:00'), animalName: "dog",
+      ownerName: "Mariam", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
+      animalWeight: "28", appointmentStatus: "pending", appointmentType: "checkup", location: "clinic"
+  ));
+
   return appointmentList;
+}
+
+List<Payment> generatePayments(){
+  DateTime now = new DateTime.now();
+  DateTime date = new DateTime(now.year, now.month, now.day, now.hour, now.minute);
+
+  List<Payment> paymentsList = [];
+
+  paymentsList.add(Payment(paymentId: "1", appointmentId: "1", amountPaid: 800, date: date));
+  paymentsList.add(Payment(paymentId: "2", appointmentId: "2", amountPaid: 1500, date: date));
+  paymentsList.add(Payment(paymentId: "3", appointmentId: "3", amountPaid: 1200, date: date));
+  paymentsList.add(Payment(paymentId: "4", appointmentId: "4", amountPaid: 5200, date: date));
+  paymentsList.add(Payment(paymentId: "5", appointmentId: "5", amountPaid: 7600, date: date));
+  paymentsList.add(Payment(paymentId: "6", appointmentId: "6", amountPaid: 2300, date: date));
+
+  return paymentsList;
 }
