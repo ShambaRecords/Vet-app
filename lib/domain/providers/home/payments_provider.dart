@@ -18,4 +18,4 @@ final filteredPaymentsStreamProvider = StreamProvider.autoDispose((ref) {
 final startTimeProvider = StateProvider(
     (ref) => Timestamp.fromDate(DateTime.now().subtract(Duration(days: 7))));
 final endTimeProvider =
-    StateProvider((ref) => Timestamp.fromDate(DateTime.now()));
+    StateProvider((ref) => Timestamp.fromDate(DateTime.now().add(Duration(days: 7))));

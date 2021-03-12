@@ -29,8 +29,14 @@ class UserHomePage extends HookWidget {
             Column(
               children: [
                 ListTile(
-                  title: Text(
-                    "Make Appointment",
+                  title: Row(
+                    children: [
+                      Icon(Icons.calendar_today),
+                      Padding(padding: EdgeInsets.only(left: 15)),
+                      Text(
+                        "Make Appointment",
+                      ),
+                    ],
                   ),
                   onTap: () => getIt<NavigationService>()
                       .navigateTo(APPOINTMENT_PAGE_ROUTE),
@@ -46,8 +52,8 @@ class UserHomePage extends HookWidget {
                       ),
                     ],
                   ),
-                  onTap: () =>
-                      getIt<NavigationService>().navigateTo(MAKE_PAYMENT_PAGE_ROUTE),
+                  onTap: () => getIt<NavigationService>()
+                      .navigateTo(MAKE_PAYMENT_PAGE_ROUTE),
                   trailing: Icon(Icons.keyboard_arrow_right),
                 ),
               ],

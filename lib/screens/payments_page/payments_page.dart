@@ -5,6 +5,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:vet_app/domain/providers/home/payments_provider.dart';
 import 'package:vet_app/model/freezed_classes.dart';
+import 'package:vet_app/util/ui/datetimeutil.dart';
 
 class PaymentsPage extends HookWidget {
   @override
@@ -38,8 +39,15 @@ class PaymentsPage extends HookWidget {
                             children: [
                               for (var payment in currentPayments) ...[
                                 ListTile(
-                                  title: Text(
-                                      "${payment.type} Payment - ${payment.user}"),
+                                  title: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                          "${payment.type} Payment - ${payment.user}"),
+                                      Text(
+                                          "${DateTimeUtils.getdd_MM_yyyy(payment.datetime!)}"),
+                                    ],
+                                  ),
                                   subtitle: Text("Ksh. ${payment.amount}"),
                                   leading: Icon(Icons.payment),
                                 ),
