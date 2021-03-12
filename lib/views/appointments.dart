@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 import 'package:vet_app/data/config.dart';
 import 'package:vet_app/data/data_source.dart';
 import 'package:vet_app/model/appointment_model.dart';
@@ -24,7 +23,6 @@ class _AppointmentsState extends State<Appointments> {
           delegate: SliverChildBuilderDelegate(
                 (context, index) {
               DateTime thisDate = _appointmentsList[index].dateTime;
-              String dateString = thisDate.toLocal().toString();
               bool showDate;
 
               if (previousDate == null) {

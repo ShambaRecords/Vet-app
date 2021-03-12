@@ -31,8 +31,6 @@ class _PaymentsState extends State<Payments> {
         SliverList(
           delegate: SliverChildBuilderDelegate(
                 (context, index) {
-              DateTime thisDate = _paymentList[index].date;
-              String dateString = thisDate.toLocal().toString();
               return GestureDetector(
                 onTap: (){},
                 child: Container(

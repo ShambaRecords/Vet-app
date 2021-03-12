@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/data/config.dart';
-import 'package:intl/intl.dart';
 import 'package:vet_app/data/data_source.dart';
 import 'package:vet_app/model/appointment_model.dart';
 import 'package:vet_app/model/payments_model.dart';
@@ -20,9 +19,7 @@ class _ReportsState extends State<Reports> {
 
   String _noAppointmentsMessage = "Choose dates between March 1 to March 30 to generate report";
 
-  int _totalAppointments = 0;
   int _totalFees = 0;
-  int _totalCompletedAppointments = 0;
   int _totalCanceledAppointments = 0;
   int _totalPendingAppointments = 0;
 
@@ -42,7 +39,7 @@ class _ReportsState extends State<Reports> {
         currentDate = picked;
 
         String dateText = Config.dateToString(currentDate);
-        (selection == 0) ? dobControllerStartDate.text = dateText: dobControllerEndDate.text = dateText;;
+        (selection == 0) ? dobControllerStartDate.text = dateText: dobControllerEndDate.text = dateText;
       });
   }
 
@@ -50,7 +47,6 @@ class _ReportsState extends State<Reports> {
     // Clear existing records from report
     filteredAppointments.clear();
     completedAppointments.clear();
-    _totalCompletedAppointments = 0;
     _totalPendingAppointments = 0;
     _totalCanceledAppointments = 0;
     _totalFees = 0;
@@ -61,14 +57,12 @@ class _ReportsState extends State<Reports> {
           && element.dateTime.isBefore(Config.stringToDate(dobControllerEndDate.text))){
         setState(() {
           filteredAppointments.add(element);
-          _totalAppointments += 1;
 
           switch (element.appointmentStatus) {
             case "pending":
               _totalPendingAppointments += 1;
               break;
             case "completed":
-              _totalCompletedAppointments += 1;
               completedAppointments.add(element);
               break;
             case "cancelled":
@@ -89,7 +83,7 @@ class _ReportsState extends State<Reports> {
     }
   }
 
-  Future<void> getTotalFeesCollected() {
+  void getTotalFeesCollected() {
     List<Payment> payments = generatePayments();
 
     completedAppointments.forEach((appointment) {

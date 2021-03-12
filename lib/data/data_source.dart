@@ -72,9 +72,6 @@ final List conversationList = [
 List<Appointment> generateAppointments(){
   List<Appointment> appointmentList = [];
 
-  DateTime now = new DateTime.now();
-  DateTime date = Config.stringToDate("2021-03-12");
-
   appointmentList.add(new Appointment(id: "1", dateTime: Config.stringToDate('2021-03-12 09:00:00'), animalName: "dog",
       ownerName: "Novac", phoneNumber: "0705352411", animalAge: "5", animalSex: "male",
       animalWeight: "28", appointmentStatus: "completed", appointmentType: "checkup", location: "clinic"
@@ -129,9 +126,6 @@ List<Appointment> generateAppointments(){
 }
 
 List<Payment> generatePayments(){
-  DateTime now = new DateTime.now();
-  DateTime date = new DateTime(now.year, now.month, now.day, now.hour, now.minute);
-
   List<Payment> paymentsList = [];
 
   paymentsList.add(Payment(paymentId: "1", appointmentId: "1", amountPaid: 800, date: Config.stringToDate("2021-03-12 13:50:00")));
