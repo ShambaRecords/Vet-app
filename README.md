@@ -7,7 +7,7 @@ Kindly follow the instructions to commit your work to the shared repo. You will 
 * Go to the url https://github.com/ShambaRecords/Vet-app/
 * Fork the repository.
 * Create a branch on your local machine with the command below:
-   git checkout -b [username/nameOfYourApp] 
+   git checkout
 * An example is: git checkout -b ShambaRecords/Vet-app
 * You should now have a local branch on your machine. Go ahead and add your work as follows:
 * Create a vet booking app that allows the vet to see his/her bookings, see payments made and also generate reports for services offered within a given period
